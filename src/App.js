@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Routes from './Routes';
 
 class App extends React.Component {
-  
-  
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
+        <Router>
           <Routes />
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
