@@ -208,3 +208,42 @@ a {
   margin: 5px 5px;
   color: #525252;
 }
+
+.articleTeamHeader {
+  border: 1px solid #c5c5c5;
+  border-bottom: 0px;
+  background: #fff;
+  margin: 5px 5px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.articleTeamHeader_left {
+  width: 57px;
+  height: 50px;
+  background-size: 65% !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+}
+
+.articleTeamHeader_right {
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 10px;
+  font-weight: 300px;
+}
+
+.articlePostHeader {
+  border: 1px solid #c5c5c5;
+  border-bottom: 0px;
+  background: #fff;
+  margin: 0px 5px 0 5px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.articlePostHeader span {
+  font-weight: 550;
+}
