@@ -47,40 +47,38 @@ class VideosList extends Component {
     switch (type) {
       case 'card':
         template = this.state.videos.map((vid, i) => {
-          if (this.state.teams.length > 0) {
-            return (
-              <CSSTransition
-                key={i}
-                classNames={{
-                  enter: style.videoList_wrapper,
-                  enterActive: style.videoList_wrapper_enter
-                }}
-                timeout={500}
-              >
-                <Link to={`/videos/${vid.id}`}>
-                  <div className={style.videoList_vid}>
-                    <div
-                      className={style.left}
-                      style={{ background: `url(images/videos/${vid.image})` }}
-                    >
-                      <div />
-                    </div>
-
-                    <div className={style.right}>
-                      <CardInfo
-                        teams={this.state.teams}
-                        team={this.state.teams[vid.team - 1]}
-                        date={vid.date}
-                      />
-                      <h2>{vid.title}</h2>
-                    </div>
+          return this.state.teams.length ? (
+            <CSSTransition
+              key={i}
+              classNames={{
+                enter: style.videoList_wrapper,
+                enterActive: style.videoList_wrapper_enter
+              }}
+              timeout={500}
+            >
+              <Link to={`/videos/${vid.id}`}>
+                <div className={style.videoList_vid}>
+                  <div
+                    className={style.left}
+                    style={{ background: `url('images/videos/${vid.image}')` }}
+                  >
+                    <div />
                   </div>
-                </Link>
-              </CSSTransition>
-            );
-          }
+
+                  <div className={style.right}>
+                    <CardInfo
+                      teams={this.state.teams}
+                      team={this.state.teams[vid.team - 1]}
+                      date={vid.date}
+                    />
+                    <h2>{vid.title}</h2>
+                  </div>
+                </div>
+              </Link>
+            </CSSTransition>
+          ) : null;
         });
-        break;
+        return template;
 
       default:
         template = null;

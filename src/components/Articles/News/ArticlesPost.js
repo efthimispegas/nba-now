@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { URL } from '../../../Utils/Config';
 
-import NewsHeader from './NewsHeader';
-import NewsBody from './NewsBody';
+import ArticlesHeader from './ArticlesHeader';
+import ArticlesBody from './ArticlesBody';
 import style from '../../../App.css';
 
-class NewsPost extends Component {
+class ArticlesPost extends Component {
   state = {
     post: '',
     team: ''
@@ -20,7 +20,7 @@ class NewsPost extends Component {
       axios.get(`${URL}/teams?id=${post.team}`).then(response => {
         this.setState({
           post,
-          team: response.data
+          team: response.data[0]
         });
       });
     });
@@ -28,13 +28,14 @@ class NewsPost extends Component {
 
   render() {
     const { post, team } = this.state;
+    console.log(post, team);
     return (
       <div className={style.post_wrapper}>
-        <NewsHeader />
-        <NewsBody />
+        <ArticlesHeader teamData={team} date={post.date} author={post.author} />
+        <ArticlesBody postData={post} />
       </div>
     );
   }
 }
 
-export default NewsPost;
+export default ArticlesPost;
