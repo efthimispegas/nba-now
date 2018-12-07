@@ -60,7 +60,7 @@ class VideosList extends Component {
                 <div className={style.videoList_vid}>
                   <div
                     className={style.left}
-                    style={{ background: `url(images/videos/${vid.image})` }}
+                    style={{ background: `url('images/videos/${vid.image}')` }}
                   >
                     <div />
                   </div>

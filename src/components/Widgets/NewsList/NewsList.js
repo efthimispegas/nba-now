@@ -52,7 +52,7 @@ class NewsList extends React.Component {
     switch (type) {
       case 'card':
         template = this.state.items.map((item, i) => {
-          return (
+          return this.state.teams.length !== 0 ? (
             <CSSTransition
               key={i}
               classNames={{
@@ -71,15 +71,45 @@ class NewsList extends React.Component {
                 </Link>
               </div>
             </CSSTransition>
-          );
+          ) : null;
         });
         break;
+      case 'main':
+        template = this.state.items.map((item, i) => {
+          return this.state.teams.length !== 0 ? (
+            <CSSTransition
+              key={i}
+              classNames={{
+                enter: style.newsList_wrapper,
+                enterActive: style.newsList_wrapper_enter
+              }}
+              timeout={500}
+            >
+              <Link to={`/articles/${item.id}`}>
+                <div className={style.newsMain_item}>
+                  <div
+                    className={style.newsMain_left}
+                    style={{
+                      background: `url('images/articles/${item.image}')`
+                    }}
+                  />
+                  <div className={style.newsMain_right}>
+                    <CardInfo
+                      team={this.state.teams[item.team - 1]}
+                      date={item.date}
+                    />
+                    <h2>{item.title}</h2>
+                  </div>
+                </div>
+              </Link>
+            </CSSTransition>
+          ) : null;
+        });
+        return template;
       default:
         template = null;
         return template;
     }
-
-    return template;
   }
 
   render() {
