@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import Home from './screens/home/Home';
-import Layout from './common/Layout';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-class App extends Component {
+import Routes from './Routes';
+
+class App extends React.Component {
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <Layout>
-            <Switch>
-              <Route path="/" component={Home} />
-            </Switch>
-          </Layout>
-        </BrowserRouter>
+      <div className="App">
+        <Router>
+          <Routes />
+        </Router>
       </div>
     );
   }
